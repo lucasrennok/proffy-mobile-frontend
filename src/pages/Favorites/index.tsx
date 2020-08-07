@@ -11,15 +11,11 @@ function Favorites(){
     const [favorites, setFavorites] = useState([]);
 
     function loadFavorites(){
-        
         AsyncStorage.getItem('favorites').then(response=>{
             if(response){
                 const favoritedTeachers = JSON.parse(response);
-                const favoritedTeachersIds = favoritedTeachers.map((teacher: Teacher) => {
-                    return teacher.id;
-                })
 
-                setFavorites(favoritedTeachersIds);
+                setFavorites(favoritedTeachers);
             }
         });
     }

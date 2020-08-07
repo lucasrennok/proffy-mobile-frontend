@@ -7,6 +7,7 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 function TeacherList(){
     const [teachers, setTeachers] = useState([]);
@@ -29,6 +30,10 @@ function TeacherList(){
             }
         });
     }
+
+    useFocusEffect(() => {
+        loadFavorites();
+    });
 
     function handleToggleFiltersVisible(){
         setIsFiltersVisible(!isFiltersVisible);
